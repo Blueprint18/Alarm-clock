@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown simulator</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    main{
+        border: 1px solid black;
+        width: 99.7%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+    .con{
+        /* border: 1px solid red; */
+        padding: 3px 20px 20px 20px;
+    }
+    h2{
+        color: green;
+    }
+    p{
+        color: white;
+        font-size: 20px;
+    }
+    input{
+        margin: 20px 0;
+        width: 100%;
+        height: 5vh;
+    }
+    button{
+        width: 30%;
+        height: 7vh;
+        margin-left: 100px;
+       background-color: red;
+    }
+    p{
+        background-color: green;
+             width: 10%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             padding: 20px;
+             border-radius: 100%;
+             margin-left: 100px;
+             margin-top: 10px;
+             font-family: sans-serif;
+   
+    }
+</style>
+<body>
+    <main>
+      <div class="con">
+        <h2>SMARTIES COUNTDOWN </h2>
+          <p id="timer" >0</p>
+        <input placeholder="INPUT1" type="number" id="inp1"> <br>
+        <input placeholder="INPUT2" type="number" id="inp2"> <br>
+        <button onclick="start()" >START</button>
+      </div>
+    </main>
+</body>
+</html>
+<script>
+ let timer = document.getElementById('timer')   
+ let inp1 = document.getElementById('inp1')
+ let inp2 = document.getElementById('inp2')
+function start() {
+ if (Number(inp1.value) == Number(inp2.value)) {
+    alert('invalid operation')
+ } else if (Number(inp1.value) < Number(inp2.value)){
+    alert('INPUT1 MUST ALWAYS BE GREATER THAN INPUT2')
+ } else if (Number(inp1.value) > Number(inp2.value)) {
+  let myinterval=  setInterval(() => {
+        inp1.value--
+        timer.innerHTML=Number(inp1.value)
+        let all=Number(inp1.value)
+        if (all==Number(inp2.value)) {
+            clearInterval(myinterval)
+            alert("time out ")
+        }
+    }, 1000);
+ }
+}
+</script>
